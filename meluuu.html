@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Moda</title>
+<script>
+function solicitarNumeros() {
+    var cantidadNumeros = parseInt(prompt("¿Cuántos números deseas ingresar?"));
+
+    if (isNaN(cantidadNumeros) || cantidadNumeros <= 0) {
+        alert("Por favor, ingresa un número válido mayor que cero.");
+        return;
+    }
+
+    var numeros = [];
+
+    for (var i = 0; i < cantidadNumeros; i++) {
+        var numero = parseInt(prompt("Ingresa el número " + (i + 1) + ":"));
+        if (isNaN(numero)) {
+            alert("Por favor, ingresa un número válido.");
+            return;
+        }
+        numeros.push(numero);
+    }
+
+    calcularModa(numeros);
+}
+
+function calcularModa(numeros) {
+    var conteo = {}; // Objeto para contar las ocurrencias de cada valor
+    var moda = -1; // Inicializar la moda como -1
+    var maxFrecuencia = -1; // Inicializar la frecuencia máxima como -1
+
+    for (var j = 0; j < numeros.length; j++) {
+        if (!conteo[numeros[j]]) conteo[numeros[j]] = 0; // Inicializar el contador si es la primera vez que se encuentra el valor
+        conteo[numeros[j]]++; // Incrementar el contador para este valor
+        if (conteo[numeros[j]] > maxFrecuencia) { // Actualizar la moda si encontramos una frecuencia mayor
+            moda = numeros[j];
+            maxFrecuencia = conteo[numeros[j]];
+        }
+    }
+
+    document.getElementById("output").textContent = "La moda es: " + moda; // Mostrar la moda en el elemento de salida
+}
+</script>
+</head>
+<body>
+<h1>Calculadora de Moda</h1>
+<button onclick="solicitarNumeros()">Ingresar Números</button>
+<h2>Resultado:</h2>
+<p id="output"></p>
+</body>
+</html>
