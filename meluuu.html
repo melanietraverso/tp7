@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
+<html >
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,20 +27,20 @@ function solicitarNumeros() {
 }
 
 function calcularModa(numeros) {
-    var conteo = {}; // Objeto para contar las ocurrencias de cada valor
-    var moda = -1; // Inicializar la moda como -1
-    var maxFrecuencia = -1; // Inicializar la frecuencia máxima como -1
+    var conteo = {};
+    var moda = -1; 
+    var maxFrecuencia = -1; 
 
     for (var j = 0; j < numeros.length; j++) {
-        if (!conteo[numeros[j]]) conteo[numeros[j]] = 0; // Inicializar el contador si es la primera vez que se encuentra el valor
-        conteo[numeros[j]]++; // Incrementar el contador para este valor
-        if (conteo[numeros[j]] > maxFrecuencia) { // Actualizar la moda si encontramos una frecuencia mayor
+        if (!conteo[numeros[j]]) conteo[numeros[j]] = 0; 
+        conteo[numeros[j]]++;
+        if (conteo[numeros[j]] > maxFrecuencia) { 
             moda = numeros[j];
             maxFrecuencia = conteo[numeros[j]];
         }
     }
 
-    document.getElementById("output").textContent = "La moda es: " + moda; // Mostrar la moda en el elemento de salida
+    document.getElementById("output").textContent = "La moda es: " + moda; 
 }
 </script>
 </head>
